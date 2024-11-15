@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 
-/// GameState class to manage the current state of the game.
 class GameState {
   final int currentLevel;
   final String feedback;
@@ -13,7 +12,6 @@ class GameState {
   });
 }
 
-/// GameCubit class to handle the game logic using Bloc.
 class GameCubit extends Cubit<GameState> {
   List<Map<String, dynamic>> levels = [
     {
