@@ -98,7 +98,7 @@ class GameCubit extends Cubit<GameState> {
       }
     } else if (_currentLevel == 3) {
       if (prompt.toLowerCase().contains('twice') ||
-          prompt.toLowerCase().contains('please')) {
+          prompt.toLowerCase().contains('cry')) {
         emit(GameState(
           currentLevel: _currentLevel + 1,
           feedback: 'Excellent prompt! Here’s an advanced clue:',
