@@ -19,8 +19,8 @@ class GamePage extends StatelessWidget {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 154, 205, 230),
-                Color.fromARGB(255, 22, 127, 145)
+                Color.fromARGB(255, 26, 22, 32),
+                Color.fromARGB(255, 24, 21, 53),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -28,45 +28,66 @@ class GamePage extends StatelessWidget {
           ),
         ),
       ),
-      body: BlocProvider(
-        create: (context) => GameCubit(),
-        child: BlocBuilder<GameCubit, GameState>(
-          builder: (context, state) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const SizedBox(height: 30),
-                LevelDisplay(level: state.currentLevel),
-                PromptInput(),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    state.feedback,
-                    style: const TextStyle(fontSize: 18, color: Colors.red),
-                  ),
-                ),
-                if (state.clue.isNotEmpty)
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      state.clue,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
+      body: Stack(
+        children: [
+          // Background Image
+          Positioned.fill(
+            child: Image.asset(
+              'assets/background.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+          BlocProvider(
+            create: (context) => GameCubit(),
+            child: BlocBuilder<GameCubit, GameState>(
+              builder: (context, state) {
+                if (state.isCompleted) {
+                  return const Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Text(
+                        'Congratulations! You have passed all the levels!',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                  ),
-                PasswordInput(),
-                const SizedBox(height: 30),
-                // const Center(
-                //   child: CircleAvatar(
-                //     radius: 100,
-                //     backgroundImage: AssetImage('assets/images/wizard.png'),
-                //     backgroundColor: Colors.transparent,
-                //   ),
-                // )
-              ],
-            );
-          },
-        ),
+                  );
+                }
+
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 30),
+                    LevelDisplay(level: state.currentLevel),
+                    PromptInput(),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        state.feedback,
+                        style: const TextStyle(fontSize: 18, color: Colors.red),
+                      ),
+                    ),
+                    if (state.clue.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          state.clue,
+                          style: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    const PasswordInput(),
+                    const SizedBox(height: 30),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

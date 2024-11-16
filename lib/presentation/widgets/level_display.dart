@@ -14,13 +14,13 @@ class LevelDisplay extends StatelessWidget {
         alignment: Alignment.center,
         padding: const EdgeInsets.all(15.0),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: const Color.fromARGB(255, 152, 142, 214),
           borderRadius: BorderRadius.circular(10.0),
           boxShadow: const [
             BoxShadow(
-              color: Colors.black12,
-              blurRadius: 10,
-              offset: Offset(0, 4),
+              color: Color.fromARGB(255, 0, 0, 0),
+              blurRadius: 7,
+              offset: Offset(0, 3),
             ),
           ],
         ),
