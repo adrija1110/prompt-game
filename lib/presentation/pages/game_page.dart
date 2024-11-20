@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:confetti/confetti.dart'; // Import the Confetti package
+import 'package:confetti/confetti.dart';
 
 import '../cubit/game_cubit.dart';
 import '../widgets/level_display.dart';
@@ -51,7 +51,6 @@ class _GamePageState extends State<GamePage> {
       ),
       body: Stack(
         children: [
-          // Background Image
           Positioned.fill(
             child: Image.asset(
               'assets/background.png',
@@ -59,7 +58,6 @@ class _GamePageState extends State<GamePage> {
             ),
           ),
           Center(
-            // Added Center to center content
             child: Container(
               constraints: const BoxConstraints(maxWidth: 400), // Line added
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -67,9 +65,7 @@ class _GamePageState extends State<GamePage> {
                 create: (context) => GameCubit(),
                 child: BlocBuilder<GameCubit, GameState>(
                   builder: (context, state) {
-                    // Check if the game is completed
                     if (state.isCompleted) {
-                      // Play confetti animation when the game is completed
                       _confettiController.play();
                       return Stack(
                         children: [
@@ -87,7 +83,6 @@ class _GamePageState extends State<GamePage> {
                               ),
                             ),
                           ),
-                          // Confetti Animation
                           Align(
                             alignment: Alignment.topCenter,
                             child: ConfettiWidget(
@@ -110,7 +105,6 @@ class _GamePageState extends State<GamePage> {
                       );
                     }
 
-                    // Main game content
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [

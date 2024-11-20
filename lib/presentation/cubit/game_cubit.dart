@@ -46,12 +46,12 @@ class GameCubit extends Cubit<GameState> {
 
   int _currentLevel = 0;
 
-  /// Initial state of the game.
+
   GameCubit()
       : super(GameState(
             currentLevel: 1, feedback: '', clue: '', isCompleted: false));
 
-  /// Method to check the user's prompt input.
+
   void checkPrompt(String prompt) {
     if (_currentLevel == 0 && prompt.toLowerCase().contains('password')) {
       emit(GameState(
@@ -143,7 +143,7 @@ class GameCubit extends Cubit<GameState> {
     }
   }
 
-  /// Method to check the user's guess input.
+
   void checkGuess(String guess) {
     if (guess.toLowerCase() == levels[_currentLevel]['word'].toLowerCase()) {
       _currentLevel++; // Increment the level first
@@ -172,7 +172,7 @@ class GameCubit extends Cubit<GameState> {
     }
   }
 
-  /// Method to reset the game.
+
   void resetGame() {
     _currentLevel = 0;
     emit(GameState(

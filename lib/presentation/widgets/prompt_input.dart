@@ -17,24 +17,24 @@ class PromptInput extends StatelessWidget {
         controller: controller,
         style: const TextStyle(
           fontSize: 20,
-          color: Color.fromARGB(255, 7, 7, 7), // Custom text color
+          color: Color.fromARGB(255, 7, 7, 7), 
         ),
         decoration: const InputDecoration(
           labelText: 'Ask me for clues',
           labelStyle: TextStyle(
             fontSize: 16,
-            color: Color.fromARGB(255, 192, 192, 253), // Custom label color
+            color: Color.fromARGB(255, 192, 192, 253),
           ),
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Color.fromARGB(255, 0, 0, 0), // Custom underline color
+              color: Color.fromARGB(255, 0, 0, 0), 
               width: 1.0,
             ),
           ),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(
               color: Color.fromARGB(
-                  255, 0, 0, 0), // Custom underline color when focused
+                  255, 0, 0, 0), 
               width: 1.0,
             ),
           ),
